@@ -18,22 +18,22 @@ namespace StickyPhysics
             stickyRB.curTri = result.triangle;*/
 
             // Find angle between velocity and forward
-            float angle = UTL_Math.angleBetweenVectors(stickyRB.transform.forward, stickyRB.velocity, stickyRB.transform.up) * Mathf.Rad2Deg;
+            float angle = UTL_Math.angleBetweenVectors(stickyRB.transform.forward, stickyRB._velocity, stickyRB.transform.up) * Mathf.Rad2Deg;
 
             // Get new Forward
             Vector3 newForward = Orientation.getNewSmoothedVector(result.triangle, result.position, stickyRB.transform.forward).normalized;
 
             // Adjust transform
-            stickyRB.transform.position = stickyRB.curTri.ProjectLocationOntoTriangle(result.position);
+            stickyRB.transform.position = stickyRB._currentTriangle.ProjectLocationOntoTriangle(result.position);
             stickyRB.transform.LookAt(stickyRB.transform.position + newForward, result.triangle.GetFaceNormal());
 
             // Calculate new velocity
             Vector3 newVelocity = Quaternion.AngleAxis(angle, result.triangle.GetFaceNormal()) * stickyRB.transform.forward;
-            newVelocity = newVelocity.normalized * stickyRB.velocity.magnitude;
-            stickyRB.velocity = Vector3.ProjectOnPlane(newVelocity, result.triangle.GetFaceNormal());
+            newVelocity = newVelocity.normalized * stickyRB._velocity.magnitude;
+            stickyRB._velocity = Vector3.ProjectOnPlane(newVelocity, result.triangle.GetFaceNormal());
 
             // Update triangle
-            stickyRB.curTri = result.triangle;
+            stickyRB._currentTriangle = result.triangle;
         }
 
         public static Vector3 getNewSmoothedVector(Triangle newTri, Vector3 position, Vector3 oldVector)

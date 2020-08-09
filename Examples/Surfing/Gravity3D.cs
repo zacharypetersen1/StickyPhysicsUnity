@@ -18,18 +18,18 @@ public class Gravity3D : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!stickyRB.isSticking)
+        if (!stickyRB._isSticking)
         {
             Vector3 gravity = resolveGravityForce();
             if (gravity.magnitude > 0)
             {
                 rotateUpTowardsVec(-gravity);
             }
-            stickyRB.rigidBody.AddForce(resolveGravityForce() * stickyRB.rigidBody.mass, ForceMode.Force);
+            stickyRB._rigidBody.AddForce(resolveGravityForce() * stickyRB._rigidBody.mass, ForceMode.Force);
         }
         else if(useStickyGravity)
         {
-            stickyRB.addImpulseForce(resolveGravityForce() * Time.fixedDeltaTime);
+            stickyRB.AddImpulseForce(resolveGravityForce() * Time.fixedDeltaTime);
         }
     }
 

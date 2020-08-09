@@ -1,36 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class StickyRigidBody : MonoBehaviour
 {
-    public LayerMask stickyMask;
-    public Vector3 impulseForce = Vector3.zero;
+    public LayerMask _stickyMask;
 
     [HideInInspector]
-    public Rigidbody rigidBody;
-
-    // State Data
+    public Vector3 _impulseForce = Vector3.zero;
     [HideInInspector]
-    public bool isSticking = true;
+    public Rigidbody _rigidBody;
+    [HideInInspector]
+    public bool _isSticking = true;
 
     // Movement Data
     [HideInInspector]
-    public Vector3
-        velocity,
-        lastPosition;
-    public StickyPhysics.Triangle curTri;
+    public Vector3 _velocity;
+    [HideInInspector]
+    public Vector3 _lastPosition;
+    public StickyPhysics.Triangle _currentTriangle;
 
-    // Start is called before the first frame update
     void Start()
     {
         StickyPhysics.AfterUnityPhysics.init();
         StickyPhysics.AfterUnityPhysics.add(this);
-        rigidBody = GetComponent<Rigidbody>();
+        _rigidBody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         StickyPhysics.Utility.fixedUpdateStep(this);
@@ -44,16 +39,16 @@ public class StickyRigidBody : MonoBehaviour
     // Causes stickyRB to unstick from surface if attached
     public void UnStick()
     {
-        if (isSticking)
+        if (_isSticking)
         {
-            isSticking = false;
-            rigidBody.isKinematic = false;
-            velocity = Vector3.zero;
+            _isSticking = false;
+            _rigidBody.isKinematic = false;
+            _velocity = Vector3.zero;
         }
     }
 
-    public void addImpulseForce(Vector3 v)
+    public void AddImpulseForce(Vector3 force)
     {
-        impulseForce += v;
+        _impulseForce += force;
     }
 }
