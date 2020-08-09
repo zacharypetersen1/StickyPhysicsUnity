@@ -28,12 +28,30 @@ public class StickyRigidBody : MonoBehaviour
 
     void FixedUpdate()
     {
-        StickyPhysics.Utility.fixedUpdateStep(this);
+        if (_isSticking)
+        {
+            Vector3 forceOnTrianglePlane = _currentTriangle.ProjectDirectionOntoTriangle(_impulseForce);
+            if (_velocity.magnitude > 0)
+            {
+                Vector3 friction = -_velocity * (_velocity.magnitude * 0.0022f);
+                forceOnTrianglePlane += friction;
+            }
+            Vector3 acceleration = forceOnTrianglePlane;
+            _velocity = _currentTriangle.ProjectDirectionOntoTriangle(_velocity + acceleration);
+            _impulseForce = Vector3.zero;
+            StickyPhysics.Utility.applyVelocity(this, 0, 0);
+        }
     }
 
     public void AfterPhysicsUpdate()
     {
-        StickyPhysics.Utility.afterPhysicsStep(this);
+        // When character is in the air, check to see if grounded
+        if (!_isSticking)
+        {
+            Vector3 deltaPosition = transform.position - _lastPosition;
+            StickyPhysics.Utility.checkIfGrounded(this, deltaPosition);
+        }
+        _lastPosition = transform.position;
     }
 
     // Causes stickyRB to unstick from surface if attached

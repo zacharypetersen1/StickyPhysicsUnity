@@ -8,37 +8,7 @@ namespace StickyPhysics
     public static class Utility
     {
 
-        // Resolves a step of sticky physics
-        public static void fixedUpdateStep(StickyRigidBody stickyRB)
-        {
-            // Character is sticking
-            if (stickyRB._isSticking)
-            {
-                Vector3 force = Vector3.ProjectOnPlane(stickyRB._impulseForce, stickyRB._currentTriangle.GetFaceNormal());
-                if (stickyRB._velocity.magnitude > 0)
-                {
-                    Vector3 friction = -stickyRB._velocity * (stickyRB._velocity.magnitude * 0.0022f);
-                    force += friction;
-                }
-                Vector3 acceleration = force;
-                stickyRB._velocity = Vector3.ProjectOnPlane(stickyRB._velocity + acceleration, stickyRB._currentTriangle.GetFaceNormal());
-                stickyRB._impulseForce = Vector3.zero;
-                applyVelocity(stickyRB, 0, 0);
-            }
-        }
-
-        public static void afterPhysicsStep(StickyRigidBody stickyRB)
-        {
-            // When character is in the air, check to see if grounded
-            if (!stickyRB._isSticking)
-            {
-                Vector3 deltaPosition = stickyRB.transform.position - stickyRB._lastPosition;
-                checkIfGrounded(stickyRB, deltaPosition);
-            }
-            stickyRB._lastPosition = stickyRB.transform.position;
-        }
-
-        static void checkIfGrounded(StickyRigidBody stickyRB, Vector3 deltaPosition)
+        public static void checkIfGrounded(StickyRigidBody stickyRB, Vector3 deltaPosition)
         {
             Ray r = new Ray(stickyRB.transform.position - deltaPosition.normalized * 0.2f, deltaPosition);
             RaycastHit hit;
@@ -60,7 +30,7 @@ namespace StickyPhysics
         }
 
         // Applies velocity based on surfing physics
-        static void applyVelocity(StickyRigidBody stickyRB, float traveled, int call)
+        public static void applyVelocity(StickyRigidBody stickyRB, float traveled, int call)
         {
             //stickyRB.stickyTri.debugRender(Color.blue);
             stickyRB.transform.position = stickyRB._currentTriangle.ProjectLocationOntoTriangle(stickyRB.transform.position);
