@@ -49,13 +49,13 @@ namespace StickyPhysics
             // Adjust direction by given angle
             if (angle != 0)
             {
-                direction = Quaternion.AngleAxis(angle, curTri.getFaceNormal()) * direction;
-                direction = Vector3.ProjectOnPlane(direction, curTri.getFaceNormal()).normalized;
+                direction = Quaternion.AngleAxis(angle, curTri.GetFaceNormal()) * direction;
+                direction = Vector3.ProjectOnPlane(direction, curTri.GetFaceNormal()).normalized;
             }
 
             // Cast away from start pos along normal and velocity
-            Vector3 cast1 = (curTri.getFaceNormal() + direction.normalized).normalized * size;
-            Result r = checkRay(curTri, startPos + curTri.getFaceNormal() * float.Epsilon, cast1, size, mask);
+            Vector3 cast1 = (curTri.GetFaceNormal() + direction.normalized).normalized * size;
+            Result r = checkRay(curTri, startPos + curTri.GetFaceNormal() * float.Epsilon, cast1, size, mask);
             switch (r.outcome)
             {
                 case Result.Outcomes.success:
@@ -64,7 +64,7 @@ namespace StickyPhysics
             }
 
             // Cast along negative of normal from where last cast ended
-            r = checkRay(curTri, startPos + cast1, -curTri.getFaceNormal(), size * 1.41421356237f, mask);
+            r = checkRay(curTri, startPos + cast1, -curTri.GetFaceNormal(), size * 1.41421356237f, mask);
             switch (r.outcome)
             {
                 case Result.Outcomes.success:
@@ -73,8 +73,8 @@ namespace StickyPhysics
             }
 
             // Cast back toward border point from where last cast ended
-            Vector3 cast2 = (direction.normalized - curTri.getFaceNormal()).normalized * size;
-            r = checkRay(curTri, startPos + cast2 - curTri.getFaceNormal() * Mathf.Epsilon, -cast2, size, mask);
+            Vector3 cast2 = (direction.normalized - curTri.GetFaceNormal()).normalized * size;
+            r = checkRay(curTri, startPos + cast2 - curTri.GetFaceNormal() * Mathf.Epsilon, -cast2, size, mask);
             return r;
         }
 

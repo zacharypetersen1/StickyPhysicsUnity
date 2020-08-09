@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace StickyPhysics
 {
@@ -33,60 +31,43 @@ namespace StickyPhysics
             };
         }
 
-        public Vector3 getFaceNormal()
+        public Vector3 GetFaceNormal()
         {
             return _faceNormal;
         }
 
-        public Vector3 getInterpolatedNormal(Vector3 position)
+        public Vector3 GetInterpolatedNormal(Vector3 atThisLocation)
         {
-            Vector3 baryCoords = getBarycentricCoords(position);
+            Vector3 baryCoords = GetBarycentricCoords(atThisLocation);
             return _vertexNormals[0] * baryCoords.x + _vertexNormals[1] * baryCoords.y + _vertexNormals[2] * baryCoords.z;
         }
 
-        public Vector3 getBarycentricCoords(Vector3 pos)
+        // Projects vector onto plane originating from origin
+        public Vector3 ProjectDirectionOntoTriangle(Vector3 direction)
         {
-            Vector3 v0 = _vertexPositions[1] - _vertexPositions[0],
-                v1 = _vertexPositions[2] - _vertexPositions[0],
-                v2 = pos - _vertexPositions[0];
-            float d00 = Vector3.Dot(v0, v0);
-            float d01 = Vector3.Dot(v0, v1);
-            float d11 = Vector3.Dot(v1, v1);
-            float d20 = Vector3.Dot(v2, v0);
-            float d21 = Vector3.Dot(v2, v1);
-            float denom = d00 * d11 - d01 * d01;
-            float v = (d11 * d20 - d01 * d21) / denom;
-            float w = (d00 * d21 - d01 * d20) / denom;
-            float u = 1.0f - v - w;
-            return new Vector3(u, v, w);
+            return Vector3.ProjectOnPlane(direction, _faceNormal);
         }
 
         // Projects a vector onto the plane that this triangle lies on
-        public Vector3 projectOntoPlane(Vector3 v)
+        public Vector3 ProjectLocationOntoTriangle(Vector3 location)
         {
             // Transform so first vert is at origin, project, then transform back 
-            return Vector3.ProjectOnPlane(v - _vertexPositions[0], _faceNormal) + _vertexPositions[0];
-        }
-
-        // Projects vector onto plane originating from origin
-        public Vector3 projectOntoPlaneFromOrigin(Vector3 v)
-        {
-            return Vector3.ProjectOnPlane(v, _faceNormal);
+            return Vector3.ProjectOnPlane(location - _vertexPositions[0], _faceNormal) + _vertexPositions[0];
         }
 
         // Projects ray onto boundaries of tri. Returns false if no boundaries are hit.
-        public bool projectOntoBoundaries(Ray r, out Vector3 point)
+        public bool ProjectRayOntoBoundaries(out Vector3 resultLocation, Ray ray)
         {
-            point = Vector3.zero;
+            resultLocation = Vector3.zero;
             bool foundIntersect = false;
             float distance = Mathf.Infinity;
 
             // Construct plane for each of tri's edges and try raycast
             for (int i = 0; i < 3; i++)
             {
-                Plane p = new Plane(_vertexPositions[(i + 1) % 3], _vertexPositions[i], _vertexPositions[i] + _faceNormal);
+                Plane plane = new Plane(_vertexPositions[(i + 1) % 3], _vertexPositions[i], _vertexPositions[i] + _faceNormal);
                 float result;
-                if (p.Raycast(r, out result))
+                if (plane.Raycast(ray, out result))
                 {
                     // If this hit is closest hit, set this as intersection point
                     if (result <= distance)
@@ -99,7 +80,7 @@ namespace StickyPhysics
 
             // Assign point if projection succeded
             if (foundIntersect)
-                point = r.origin + r.direction * distance;
+                resultLocation = ray.origin + ray.direction * distance;
 
             return foundIntersect;
         }
@@ -111,11 +92,28 @@ namespace StickyPhysics
         }
 
         // Draw the triangle for debugging
-        public void debugRender(Color c)
+        public void DebugDraw(Color color)
         {
-            Debug.DrawLine(_vertexPositions[0], _vertexPositions[1], c);
-            Debug.DrawLine(_vertexPositions[1], _vertexPositions[2], c);
-            Debug.DrawLine(_vertexPositions[2], _vertexPositions[0], c);
+            Debug.DrawLine(_vertexPositions[0], _vertexPositions[1], color);
+            Debug.DrawLine(_vertexPositions[1], _vertexPositions[2], color);
+            Debug.DrawLine(_vertexPositions[2], _vertexPositions[0], color);
+        }
+
+        private Vector3 GetBarycentricCoords(Vector3 position)
+        {
+            Vector3 v0 = _vertexPositions[1] - _vertexPositions[0],
+                v1 = _vertexPositions[2] - _vertexPositions[0],
+                v2 = position - _vertexPositions[0];
+            float d00 = Vector3.Dot(v0, v0);
+            float d01 = Vector3.Dot(v0, v1);
+            float d11 = Vector3.Dot(v1, v1);
+            float d20 = Vector3.Dot(v2, v0);
+            float d21 = Vector3.Dot(v2, v1);
+            float denom = d00 * d11 - d01 * d01;
+            float v = (d11 * d20 - d01 * d21) / denom;
+            float w = (d00 * d21 - d01 * d20) / denom;
+            float u = 1.0f - v - w;
+            return new Vector3(u, v, w);
         }
     }
 }

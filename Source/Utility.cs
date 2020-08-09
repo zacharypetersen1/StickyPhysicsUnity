@@ -14,14 +14,14 @@ namespace StickyPhysics
             // Character is sticking
             if (stickyRB.isSticking)
             {
-                Vector3 force = Vector3.ProjectOnPlane(stickyRB.impulseForce, stickyRB.curTri.getFaceNormal());
+                Vector3 force = Vector3.ProjectOnPlane(stickyRB.impulseForce, stickyRB.curTri.GetFaceNormal());
                 if (stickyRB.velocity.magnitude > 0)
                 {
                     Vector3 friction = -stickyRB.velocity * (stickyRB.velocity.magnitude * 0.0022f);
                     force += friction;
                 }
                 Vector3 acceleration = force;
-                stickyRB.velocity = Vector3.ProjectOnPlane(stickyRB.velocity + acceleration, stickyRB.curTri.getFaceNormal());
+                stickyRB.velocity = Vector3.ProjectOnPlane(stickyRB.velocity + acceleration, stickyRB.curTri.GetFaceNormal());
                 stickyRB.impulseForce = Vector3.zero;
                 applyVelocity(stickyRB, 0, 0);
             }
@@ -49,12 +49,12 @@ namespace StickyPhysics
                 stickyRB.GetComponent<Rigidbody>().isKinematic = true;
                 stickyRB.transform.position = hit.point;
                 stickyRB.curTri = new Triangle(hit.transform, hit.normal, hit.collider as MeshCollider, hit.triangleIndex);
-                Vector3 forward = stickyRB.curTri.projectOntoPlaneFromOrigin(stickyRB.transform.forward);
+                Vector3 forward = stickyRB.curTri.ProjectDirectionOntoTriangle(stickyRB.transform.forward);
                 if(forward.magnitude < Mathf.Epsilon)
                 {
-                    forward = stickyRB.curTri.projectOntoPlaneFromOrigin(stickyRB.transform.up);
+                    forward = stickyRB.curTri.ProjectDirectionOntoTriangle(stickyRB.transform.up);
                 }
-                stickyRB.transform.LookAt(stickyRB.transform.position + forward, stickyRB.curTri.getFaceNormal());
+                stickyRB.transform.LookAt(stickyRB.transform.position + forward, stickyRB.curTri.GetFaceNormal());
                 stickyRB.addImpulseForce(velocity);
             }
         }
@@ -63,19 +63,19 @@ namespace StickyPhysics
         static void applyVelocity(StickyRigidBody stickyRB, float traveled, int call)
         {
             //stickyRB.stickyTri.debugRender(Color.blue);
-            stickyRB.transform.position = stickyRB.curTri.projectOntoPlane(stickyRB.transform.position);
+            stickyRB.transform.position = stickyRB.curTri.ProjectLocationOntoTriangle(stickyRB.transform.position);
             Vector3 tickVelocity = stickyRB.velocity.normalized * ((stickyRB.velocity.magnitude * Time.fixedDeltaTime) - traveled);
 
             // Find exit point and exit vector
             Vector3 exitPoint;
-            stickyRB.curTri.projectOntoBoundaries(new Ray(stickyRB.transform.position, tickVelocity), out exitPoint);
-            exitPoint = stickyRB.curTri.projectOntoPlane(exitPoint);
+            stickyRB.curTri.ProjectRayOntoBoundaries(out exitPoint, new Ray(stickyRB.transform.position, tickVelocity));
+            exitPoint = stickyRB.curTri.ProjectLocationOntoTriangle(exitPoint);
             Vector3 exitVector = exitPoint - stickyRB.transform.position;
 
             // Check if player will cross over to a new triangle
             BorderCheck.Result result = BorderCheck.checkRay(
                 stickyRB.curTri,
-                stickyRB.transform.position + stickyRB.curTri.getFaceNormal() * 0.01f,
+                stickyRB.transform.position + stickyRB.curTri.GetFaceNormal() * 0.01f,
                 tickVelocity.normalized,
                 Mathf.Min(tickVelocity.magnitude, exitVector.magnitude),
                 stickyRB.stickyMask);
@@ -86,19 +86,19 @@ namespace StickyPhysics
                 stickyRB.curTri = result.triangle;
 
                 // Update orientation of stickyVelocity and stickyRB's object
-                stickyRB.velocity = Orientation.rotateVectorToNewPlane(oldTri.getFaceNormal(), stickyRB.curTri.getFaceNormal(), stickyRB.velocity);
-                stickyRB.velocity = stickyRB.curTri.projectOntoPlaneFromOrigin(stickyRB.velocity);
-                Orientation.rotateToNewUp(stickyRB.transform, stickyRB.curTri.getFaceNormal());
+                stickyRB.velocity = Orientation.rotateVectorToNewPlane(oldTri.GetFaceNormal(), stickyRB.curTri.GetFaceNormal(), stickyRB.velocity);
+                stickyRB.velocity = stickyRB.curTri.ProjectDirectionOntoTriangle(stickyRB.velocity);
+                Orientation.rotateToNewUp(stickyRB.transform, stickyRB.curTri.GetFaceNormal());
                 
                 float thisTraveled = (stickyRB.transform.position - result.position).magnitude;
-                stickyRB.transform.position = stickyRB.curTri.projectOntoPlane(result.position);
+                stickyRB.transform.position = stickyRB.curTri.ProjectLocationOntoTriangle(result.position);
                 applyVelocity(stickyRB, traveled + thisTraveled, call + 1);
             }
             // Check if player will exit the tri this frame
             else if (tickVelocity.magnitude < exitVector.magnitude)
             {
                 // Will not exit
-                stickyRB.transform.position = stickyRB.curTri.projectOntoPlane(stickyRB.transform.position + tickVelocity);
+                stickyRB.transform.position = stickyRB.curTri.ProjectLocationOntoTriangle(stickyRB.transform.position + tickVelocity);
             }
             else
             {

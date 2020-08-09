@@ -24,13 +24,13 @@ namespace StickyPhysics
             Vector3 newForward = Orientation.getNewSmoothedVector(result.triangle, result.position, stickyRB.transform.forward).normalized;
 
             // Adjust transform
-            stickyRB.transform.position = stickyRB.curTri.projectOntoPlane(result.position);
-            stickyRB.transform.LookAt(stickyRB.transform.position + newForward, result.triangle.getFaceNormal());
+            stickyRB.transform.position = stickyRB.curTri.ProjectLocationOntoTriangle(result.position);
+            stickyRB.transform.LookAt(stickyRB.transform.position + newForward, result.triangle.GetFaceNormal());
 
             // Calculate new velocity
-            Vector3 newVelocity = Quaternion.AngleAxis(angle, result.triangle.getFaceNormal()) * stickyRB.transform.forward;
+            Vector3 newVelocity = Quaternion.AngleAxis(angle, result.triangle.GetFaceNormal()) * stickyRB.transform.forward;
             newVelocity = newVelocity.normalized * stickyRB.velocity.magnitude;
-            stickyRB.velocity = Vector3.ProjectOnPlane(newVelocity, result.triangle.getFaceNormal());
+            stickyRB.velocity = Vector3.ProjectOnPlane(newVelocity, result.triangle.GetFaceNormal());
 
             // Update triangle
             stickyRB.curTri = result.triangle;
@@ -39,11 +39,11 @@ namespace StickyPhysics
         public static Vector3 getNewSmoothedVector(Triangle newTri, Vector3 position, Vector3 oldVector)
         {
             //Debug.DrawLine(position, position + oldForward, Color.red);
-            Vector3 interpolatedUp = newTri.getInterpolatedNormal(position);
+            Vector3 interpolatedUp = newTri.GetInterpolatedNormal(position);
             //Debug.DrawLine(position, position + interpolatedUp, Color.yellow);
             Vector3 interpolatedForward = Vector3.ProjectOnPlane(oldVector.normalized, interpolatedUp).normalized;
             //Debug.DrawLine(position, position + interpolatedForward, Color.blue);
-            Vector3 newUp = newTri.getFaceNormal();
+            Vector3 newUp = newTri.GetFaceNormal();
             Vector3 newDirection = interpolatedForward - ((Vector3.Dot(interpolatedForward, newUp) / Vector3.Dot(interpolatedUp, newUp)) * interpolatedUp);
             return Vector3.ProjectOnPlane(newDirection, newUp).normalized * oldVector.magnitude;
         }
