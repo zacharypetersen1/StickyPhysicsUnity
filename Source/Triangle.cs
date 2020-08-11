@@ -11,24 +11,33 @@ namespace StickyPhysics
         private Vector3 _faceNormal;
 
         // Construct using mesh and triangle index from raycast
-        public Triangle(Transform setTransform, Vector3 setNormal, MeshCollider mc, int setTriangleIndex)
+        public Triangle()
         {
-            _faceNormal = setNormal;
-            _ownerTransform = setTransform;
-            _triangleIndex = setTriangleIndex;
 
-            Mesh mesh = mc.sharedMesh;
-            _vertexPositions = new Vector3[]{
-                _ownerTransform.TransformPoint(mesh.vertices[mesh.triangles[_triangleIndex*3]]),
-                _ownerTransform.TransformPoint(mesh.vertices[mesh.triangles[_triangleIndex*3 + 1]]),
-                _ownerTransform.TransformPoint(mesh.vertices[mesh.triangles[_triangleIndex*3 + 2]])
+        }
+
+        public static Triangle ConstructTriangleFromRaycastHit(RaycastHit hitResult)
+        {
+            Triangle triangle = new Triangle();
+            triangle._faceNormal = hitResult.normal;
+            triangle._ownerTransform = hitResult.transform;
+            triangle._triangleIndex = hitResult.triangleIndex;
+
+            MeshCollider meshCollider = hitResult.collider as MeshCollider;
+            Mesh mesh = meshCollider.sharedMesh;
+            triangle._vertexPositions = new Vector3[]{
+                triangle._ownerTransform.TransformPoint(mesh.vertices[mesh.triangles[triangle._triangleIndex*3]]),
+                triangle._ownerTransform.TransformPoint(mesh.vertices[mesh.triangles[triangle._triangleIndex*3 + 1]]),
+                triangle._ownerTransform.TransformPoint(mesh.vertices[mesh.triangles[triangle._triangleIndex*3 + 2]])
             };
-            _vertexNormals = new Vector3[]
+            triangle._vertexNormals = new Vector3[]
             {
-                _ownerTransform.TransformDirection(mesh.normals[mesh.triangles[_triangleIndex*3]]),
-                _ownerTransform.TransformDirection(mesh.normals[mesh.triangles[_triangleIndex*3 + 1]]),
-                _ownerTransform.TransformDirection(mesh.normals[mesh.triangles[_triangleIndex*3 + 2]])
+                triangle._ownerTransform.TransformDirection(mesh.normals[mesh.triangles[triangle._triangleIndex*3]]),
+                triangle._ownerTransform.TransformDirection(mesh.normals[mesh.triangles[triangle._triangleIndex*3 + 1]]),
+                triangle._ownerTransform.TransformDirection(mesh.normals[mesh.triangles[triangle._triangleIndex*3 + 2]])
             };
+
+            return triangle;
         }
 
         public Vector3 GetFaceNormal()

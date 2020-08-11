@@ -94,13 +94,13 @@ public class StickyRigidBody : MonoBehaviour
         return Physics.Raycast(ray, out dataForStartSticking, deltaPosition.magnitude + 0.4f, _stickyMask);
     }
 
-    private void StartSticking(RaycastHit dataForStartSticking)
+    private void StartSticking(RaycastHit raycastHit)
     {
         Vector3 velocity = _rigidBody.velocity;
         _isSticking = true;
         _rigidBody.isKinematic = true;
-        transform.position = dataForStartSticking.point;
-        _currentTriangle = new StickyPhysics.Triangle(dataForStartSticking.transform, dataForStartSticking.normal, dataForStartSticking.collider as MeshCollider, dataForStartSticking.triangleIndex);
+        transform.position = raycastHit.point;
+        _currentTriangle = StickyPhysics.Triangle.ConstructTriangleFromRaycastHit(raycastHit);
         Vector3 forward = _currentTriangle.ProjectDirectionOntoTriangle(transform.forward);
         if (forward.magnitude < Mathf.Epsilon)
         {
@@ -234,7 +234,7 @@ public class StickyRigidBody : MonoBehaviour
                 return new BorderResult(BorderResult.Outcomes.hitSelf);
             }
             BorderResult borderResult = new BorderResult(BorderResult.Outcomes.success);
-            borderResult.triangle = new StickyPhysics.Triangle(raycastHit.transform, raycastHit.normal, raycastHit.collider as MeshCollider, raycastHit.triangleIndex);
+            borderResult.triangle = StickyPhysics.Triangle.ConstructTriangleFromRaycastHit(raycastHit);
             borderResult.position = raycastHit.point;
             return borderResult;
 
