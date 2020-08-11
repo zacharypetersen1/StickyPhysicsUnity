@@ -96,9 +96,10 @@ public class StickyRigidBody : MonoBehaviour
 
     private void StartSticking(RaycastHit raycastHit)
     {
-        Vector3 velocity = _rigidBody.velocity;
         _isSticking = true;
+        AddImpulseForce(_rigidBody.velocity);
         _rigidBody.isKinematic = true;
+        _rigidBody.velocity = Vector3.zero;
         transform.position = raycastHit.point;
         _currentTriangle = StickyPhysics.Triangle.ConstructTriangleFromRaycastHit(raycastHit);
         Vector3 forward = _currentTriangle.ProjectDirectionOntoTriangle(transform.forward);
@@ -107,7 +108,6 @@ public class StickyRigidBody : MonoBehaviour
             forward = _currentTriangle.ProjectDirectionOntoTriangle(transform.up);
         }
         transform.LookAt(transform.position + forward, _currentTriangle.GetFaceNormal());
-        AddImpulseForce(velocity);
     }
 
     // Applies velocity based on surfing physics
