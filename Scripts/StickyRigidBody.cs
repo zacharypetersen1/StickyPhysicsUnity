@@ -107,7 +107,7 @@ public class StickyRigidBody : MonoBehaviour
         {
             forward = _currentTriangle.ProjectDirectionOntoTriangle(transform.up);
         }
-        transform.LookAt(transform.position + forward, _currentTriangle.GetFaceNormal());
+        transform.LookAt(transform.position + forward, _currentTriangle.GetWorldFaceNormal());
     }
 
     // Applies velocity based on surfing physics
@@ -124,7 +124,7 @@ public class StickyRigidBody : MonoBehaviour
 
         // Check if player will cross over to a new triangle
         BorderResult borderResult = CastRayToLookForBorder(
-            transform.position + _currentTriangle.GetFaceNormal() * 0.01f,
+            transform.position + _currentTriangle.GetWorldFaceNormal() * 0.01f,
             tickVelocity.normalized,
             Mathf.Min(tickVelocity.magnitude, exitVector.magnitude)
         );
@@ -194,13 +194,13 @@ public class StickyRigidBody : MonoBehaviour
         // Adjust direction by given angle
         if (angle != 0)
         {
-            direction = Quaternion.AngleAxis(angle, _currentTriangle.GetFaceNormal()) * direction;
-            direction = Vector3.ProjectOnPlane(direction, _currentTriangle.GetFaceNormal()).normalized;
+            direction = Quaternion.AngleAxis(angle, _currentTriangle.GetWorldFaceNormal()) * direction;
+            direction = Vector3.ProjectOnPlane(direction, _currentTriangle.GetWorldFaceNormal()).normalized;
         }
 
         // Cast away from start pos along normal and velocity
-        Vector3 cast1 = (_currentTriangle.GetFaceNormal() + direction.normalized).normalized * size;
-        BorderResult borderResult = CastRayToLookForBorder(startPos + _currentTriangle.GetFaceNormal() * float.Epsilon, cast1, size);
+        Vector3 cast1 = (_currentTriangle.GetWorldFaceNormal() + direction.normalized).normalized * size;
+        BorderResult borderResult = CastRayToLookForBorder(startPos + _currentTriangle.GetWorldFaceNormal() * float.Epsilon, cast1, size);
         switch (borderResult.outcome)
         {
             case BorderResult.Outcomes.success:
@@ -209,7 +209,7 @@ public class StickyRigidBody : MonoBehaviour
         }
 
         // Cast "down" along negative of normal
-        borderResult = CastRayToLookForBorder(startPos + cast1, -_currentTriangle.GetFaceNormal(), size * 1.41421356237f);
+        borderResult = CastRayToLookForBorder(startPos + cast1, -_currentTriangle.GetWorldFaceNormal(), size * 1.41421356237f);
         switch (borderResult.outcome)
         {
             case BorderResult.Outcomes.success:
@@ -218,8 +218,8 @@ public class StickyRigidBody : MonoBehaviour
         }
 
         // Cast back toward starting point
-        Vector3 cast2 = (direction.normalized - _currentTriangle.GetFaceNormal()).normalized * size;
-        borderResult = CastRayToLookForBorder(startPos + cast2 - _currentTriangle.GetFaceNormal() * Mathf.Epsilon, -cast2, size);
+        Vector3 cast2 = (direction.normalized - _currentTriangle.GetWorldFaceNormal()).normalized * size;
+        borderResult = CastRayToLookForBorder(startPos + cast2 - _currentTriangle.GetWorldFaceNormal() * Mathf.Epsilon, -cast2, size);
         return borderResult;
     }
 
@@ -252,12 +252,12 @@ public class StickyRigidBody : MonoBehaviour
 
         // Adjust transform
         transform.position = _currentTriangle.ProjectLocationOntoTriangle(result.position);
-        transform.LookAt(transform.position + newForward, result.triangle.GetFaceNormal());
+        transform.LookAt(transform.position + newForward, result.triangle.GetWorldFaceNormal());
 
         // Calculate new velocity
-        Vector3 newVelocity = Quaternion.AngleAxis(angle, result.triangle.GetFaceNormal()) * transform.forward;
+        Vector3 newVelocity = Quaternion.AngleAxis(angle, result.triangle.GetWorldFaceNormal()) * transform.forward;
         newVelocity = newVelocity.normalized * _velocity.magnitude;
-        _velocity = Vector3.ProjectOnPlane(newVelocity, result.triangle.GetFaceNormal());
+        _velocity = Vector3.ProjectOnPlane(newVelocity, result.triangle.GetWorldFaceNormal());
 
         // Update triangle
         _currentTriangle = result.triangle;
@@ -265,9 +265,9 @@ public class StickyRigidBody : MonoBehaviour
 
     private Vector3 PredictForwardAfterCrossBorder(StickyPhysics.Triangle newTri, Vector3 position, Vector3 oldVector)
     {
-        Vector3 interpolatedUp = newTri.GetInterpolatedNormal(position);
+        Vector3 interpolatedUp = newTri.GetWorldInterpolatedNormal(position);
         Vector3 interpolatedForward = Vector3.ProjectOnPlane(oldVector.normalized, interpolatedUp).normalized;
-        Vector3 newUp = newTri.GetFaceNormal();
+        Vector3 newUp = newTri.GetWorldFaceNormal();
         Vector3 newDirection = interpolatedForward - ((Vector3.Dot(interpolatedForward, newUp) / Vector3.Dot(interpolatedUp, newUp)) * interpolatedUp);
         return Vector3.ProjectOnPlane(newDirection, newUp).normalized * oldVector.magnitude;
     }
@@ -275,7 +275,7 @@ public class StickyRigidBody : MonoBehaviour
     // Rotates a vector from the space of oldNormal to the space of newNormal
     private void CrossBorderNotSmooth(BorderResult borderResult)
     {
-        float dot = Vector3.Dot(_currentTriangle.GetFaceNormal(), borderResult.triangle.GetFaceNormal());
+        float dot = Vector3.Dot(_currentTriangle.GetWorldFaceNormal(), borderResult.triangle.GetWorldFaceNormal());
 
         // Account for imprecision
         dot = Mathf.Clamp(dot, -1.0f, 1.0f);
@@ -285,7 +285,7 @@ public class StickyRigidBody : MonoBehaviour
         {
             // Calculate degrees for rotations and rotation axis
             float rotationDegrees = Mathf.Acos(dot) * Mathf.Rad2Deg;
-            Vector3 axis = Vector3.Cross(_currentTriangle.GetFaceNormal(), borderResult.triangle.GetFaceNormal());
+            Vector3 axis = Vector3.Cross(_currentTriangle.GetWorldFaceNormal(), borderResult.triangle.GetWorldFaceNormal());
 
             // Preform rotation
             _velocity = Quaternion.AngleAxis(rotationDegrees, axis) * _velocity;
@@ -295,7 +295,7 @@ public class StickyRigidBody : MonoBehaviour
         //TODO catch case where dot == -1?
 
         _currentTriangle = borderResult.triangle;
-        RotateToNewUp(transform, _currentTriangle.GetFaceNormal());
+        RotateToNewUp(transform, _currentTriangle.GetWorldFaceNormal());
         transform.position = _currentTriangle.ProjectLocationOntoTriangle(borderResult.position);
     }
 
