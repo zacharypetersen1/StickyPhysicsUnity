@@ -6,9 +6,12 @@ namespace StickyPhysics
     {
         public Transform _ownerTransform; // Transform component of gameobject that owns this triangle
         public int _triangleIndex;
-        private Vector3[] _vertexPositions;     // In world position
-        private Vector3[] _vertexNormals;
-        private Vector3 _faceNormal;
+        private Vector3[] _objectVertexPositions;     // In world position
+        private Vector3[] _objectVertexNormals;
+        private Vector3[] _worldVertexPositions;
+        private Vector3[] _worldVertexNormals;
+        private Vector3 _objectFaceNormal;
+        private Vector3 _worldFaceNormal;
 
         // Construct using mesh and triangle index from raycast
         public Triangle()
@@ -24,39 +27,68 @@ namespace StickyPhysics
 
             MeshCollider meshCollider = hitResult.collider as MeshCollider;
             Mesh mesh = meshCollider.sharedMesh;
-            triangle._vertexPositions = new Vector3[]{
+            triangle._objectVertexPositions = new Vector3[]{
                 mesh.vertices[mesh.triangles[hitResult.triangleIndex*3]],
                 mesh.vertices[mesh.triangles[hitResult.triangleIndex*3 + 1]],
                 mesh.vertices[mesh.triangles[hitResult.triangleIndex*3 + 2]]
             };
-            triangle._vertexNormals = new Vector3[]
+            triangle._objectVertexNormals = new Vector3[]
             {
                 mesh.normals[mesh.triangles[hitResult.triangleIndex*3]],
                 mesh.normals[mesh.triangles[hitResult.triangleIndex*3 + 1]],
                 mesh.normals[mesh.triangles[hitResult.triangleIndex*3 + 2]]
             };
 
-            triangle._faceNormal = Vector3.Cross(
-                triangle._vertexPositions[1] - triangle._vertexPositions[0],
-                triangle._vertexPositions[2] - triangle._vertexPositions[0]
+            triangle._objectFaceNormal = Vector3.Cross(
+                triangle._objectVertexPositions[1] - triangle._objectVertexPositions[0],
+                triangle._objectVertexPositions[2] - triangle._objectVertexPositions[0]
             ).normalized;
+
+            triangle._worldVertexPositions = new Vector3[3];
+            triangle._worldVertexNormals = new Vector3[3];
+            triangle.TransformObjectDataToWorld();
 
             return triangle;
         }
 
+        private void TransformObjectDataToWorld()
+        {
+            for(int i = 0; i < 3; i++)
+            {
+                _worldVertexPositions[i] = _ownerTransform.TransformPoint(_objectVertexPositions[i]);
+                _worldVertexNormals[i] = _ownerTransform.TransformDirection(_objectVertexNormals[i]);
+            }
+            _worldFaceNormal = _ownerTransform.TransformDirection(_objectFaceNormal);
+        }
+
         private Vector3 GetWorldVertexPosition(int index)
         {
-            return _ownerTransform.TransformPoint(_vertexPositions[index]);
+            if (_ownerTransform.hasChanged)
+            {
+                TransformObjectDataToWorld();
+                _ownerTransform.hasChanged = false;
+            }
+            return _ownerTransform.TransformPoint(_objectVertexPositions[index]);
         }
 
         private Vector3 GetWorldVertexNormal(int index)
         {
-            return _ownerTransform.TransformDirection(_vertexNormals[index]);
+            if (_ownerTransform.hasChanged)
+            {
+                TransformObjectDataToWorld();
+                _ownerTransform.hasChanged = false;
+            }
+            return _ownerTransform.TransformDirection(_objectVertexNormals[index]);
         }
 
         public Vector3 GetWorldFaceNormal()
         {
-            return _ownerTransform.TransformDirection(_faceNormal);
+            if (_ownerTransform.hasChanged)
+            {
+                TransformObjectDataToWorld();
+                _ownerTransform.hasChanged = false;
+            }
+            return _ownerTransform.TransformDirection(_objectFaceNormal);
         }
 
         public Vector3 GetWorldInterpolatedNormal(Vector3 atThisLocation)
