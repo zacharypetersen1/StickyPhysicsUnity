@@ -61,7 +61,7 @@ namespace StickyPhysics
             _worldFaceNormal = _ownerTransform.TransformDirection(_objectFaceNormal);
         }
 
-        private Vector3 GetWorldVertexPosition(int index)
+        private Vector3 GetVertexWorldPosition(int index)
         {
             if (_ownerTransform.hasChanged)
             {
@@ -71,7 +71,7 @@ namespace StickyPhysics
             return _ownerTransform.TransformPoint(_objectVertexPositions[index]);
         }
 
-        private Vector3 GetWorldVertexNormal(int index)
+        private Vector3 GetVertexWorldNormal(int index)
         {
             if (_ownerTransform.hasChanged)
             {
@@ -94,7 +94,7 @@ namespace StickyPhysics
         public Vector3 GetWorldInterpolatedNormal(Vector3 atThisLocation)
         {
             Vector3 baryCoords = GetBarycentricCoords(atThisLocation);
-            return GetWorldVertexNormal(0) * baryCoords.x + GetWorldVertexNormal(1) * baryCoords.y + GetWorldVertexNormal(2) * baryCoords.z;
+            return GetVertexWorldNormal(0) * baryCoords.x + GetVertexWorldNormal(1) * baryCoords.y + GetVertexWorldNormal(2) * baryCoords.z;
         }
 
         // Projects vector onto plane originating from origin
@@ -107,7 +107,7 @@ namespace StickyPhysics
         public Vector3 ProjectLocationOntoTriangle(Vector3 location)
         {
             // Transform so first vert is at origin, project, then transform back 
-            return Vector3.ProjectOnPlane(location - GetWorldVertexPosition(0), GetWorldFaceNormal()) + GetWorldVertexPosition(0);
+            return Vector3.ProjectOnPlane(location - GetVertexWorldPosition(0), GetWorldFaceNormal()) + GetVertexWorldPosition(0);
         }
 
         // Projects ray onto boundaries of tri. Returns false if no boundaries are hit.
@@ -120,7 +120,7 @@ namespace StickyPhysics
             // Construct plane for each of tri's edges and try raycast
             for (int i = 0; i < 3; i++)
             {
-                Plane plane = new Plane(GetWorldVertexPosition((i + 1) % 3), GetWorldVertexPosition(i), GetWorldVertexPosition(i) + GetWorldFaceNormal());
+                Plane plane = new Plane(GetVertexWorldPosition((i + 1) % 3), GetVertexWorldPosition(i), GetVertexWorldPosition(i) + GetWorldFaceNormal());
                 float result;
                 if (plane.Raycast(ray, out result))
                 {
@@ -143,22 +143,22 @@ namespace StickyPhysics
         // Converts tri to something readable
         public override string ToString()
         {
-            return string.Format("V0:{0} V1:{1} V2{2} N:{3}", GetWorldVertexPosition(0), GetWorldVertexPosition(1), GetWorldVertexPosition(2), GetWorldFaceNormal());
+            return string.Format("V0:{0} V1:{1} V2{2} N:{3}", GetVertexWorldPosition(0), GetVertexWorldPosition(1), GetVertexWorldPosition(2), GetWorldFaceNormal());
         }
 
         // Draw the triangle for debugging
         public void DebugDraw(Color color)
         {
-            Debug.DrawLine(GetWorldVertexPosition(0), GetWorldVertexPosition(1), color);
-            Debug.DrawLine(GetWorldVertexPosition(1), GetWorldVertexPosition(2), color);
-            Debug.DrawLine(GetWorldVertexPosition(2), GetWorldVertexPosition(0), color);
+            Debug.DrawLine(GetVertexWorldPosition(0), GetVertexWorldPosition(1), color);
+            Debug.DrawLine(GetVertexWorldPosition(1), GetVertexWorldPosition(2), color);
+            Debug.DrawLine(GetVertexWorldPosition(2), GetVertexWorldPosition(0), color);
         }
 
         private Vector3 GetBarycentricCoords(Vector3 position)
         {
-            Vector3 v0 = GetWorldVertexPosition(1) - GetWorldVertexPosition(0),
-                v1 = GetWorldVertexPosition(2) - GetWorldVertexPosition(0),
-                v2 = position - GetWorldVertexPosition(0);
+            Vector3 v0 = GetVertexWorldPosition(1) - GetVertexWorldPosition(0),
+                v1 = GetVertexWorldPosition(2) - GetVertexWorldPosition(0),
+                v2 = position - GetVertexWorldPosition(0);
             float d00 = Vector3.Dot(v0, v0);
             float d01 = Vector3.Dot(v0, v1);
             float d11 = Vector3.Dot(v1, v1);
