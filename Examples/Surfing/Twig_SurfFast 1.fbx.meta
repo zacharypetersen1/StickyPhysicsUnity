@@ -1,0 +1,984 @@
+fileFormatVersion: 2
+guid: 4db5a69ab54c30d4a9415f4dc2ad41c0
+timeCreated: 1494883268
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: AnkleInside.L
+    100002: AnkleInside.L_end
+    100004: AnkleInside.R
+    100006: AnkleInside.R_end
+    100008: AnkleOutside.L
+    100010: AnkleOutside.L_end
+    100012: AnkleOutside.R
+    100014: AnkleOutside.R_end
+    100016: Armature
+    100018: ArmPole.L
+    100020: ArmPole.L_end
+    100022: ArmPole.R
+    100024: ArmPole.R_end
+    100026: BackFlapLower.L
+    100028: BackFlapLower.L_end
+    100030: BackFlapLower.R
+    100032: BackFlapLower.R_end
+    100034: BackFlapUpper.L
+    100036: BackFlapUpper.R
+    100038: Bone
+    100040: Bone.001
+    100042: Bone.002
+    100044: Bone.003
+    100046: Bone.003_end
+    100048: Bone.004
+    100050: Bone.004_end
+    100052: Bone.005
+    100054: Bone.006
+    100056: Bone.007
+    100058: Bone.008
+    100060: Bone.009
+    100062: Bone.010
+    100064: Bone.011
+    100066: Bone.012
+    100068: Bone.012_end
+    100070: Bone.013
+    100072: Bone.013_end
+    100074: Bone.014
+    100076: Bone.014_end
+    100078: Bone.015
+    100080: Chin
+    100082: Chin_end
+    100084: Foot.L
+    100086: Foot.R
+    100088: Hair1
+    100090: Hair2
+    100092: Hair3
+    100094: Hair4
+    100096: Hair5
+    100098: Hair5_end
+    100100: HairController
+    100102: HairController_end
+    100104: Hand.L
+    100106: Hand.R
+    100108: Hand.Upper.L
+    100110: Hand.Upper.R
+    100112: HandHandle.L
+    100114: HandHandle.L_end
+    100116: HandHandle.R
+    100118: HandHandle.R_end
+    100120: HandLower.L
+    100122: HandLower.L_end
+    100124: HandLower.R
+    100126: HandLower.R_end
+    100128: HandMid.L
+    100130: HandMid.R
+    100132: handTarget.L
+    100134: handTarget.L_end
+    100136: handTarget.R
+    100138: handTarget.R_end
+    100140: Head
+    100142: Heel.L
+    100144: Heel.R
+    100146: Hip.L
+    100148: Hip.R
+    100150: HipController
+    100152: LegHandle.L
+    100154: LegHandle.L_end
+    100156: LegHandle.R
+    100158: LegHandle.R_end
+    100160: LegPoleTarget.L
+    100162: LegPoleTarget.L_end
+    100164: LegPoleTarget.R
+    100166: LegPoleTarget.R_end
+    100168: LowerArm.L
+    100170: LowerArm.R
+    100172: LowerHead
+    100174: LowerLeg.L
+    100176: LowerLeg.R
+    100178: Neck
+    100180: OutsideFlapLower.L
+    100182: OutsideFlapLower.L_end
+    100184: OutsideFlapLower.R
+    100186: OutsideFlapLower.R_end
+    100188: OutsideFlapUpper.L
+    100190: OutsideFlapUpper.R
+    100192: RedEyeLeftBack
+    100194: RedEyeLeftFront
+    100196: RedEyeRightBack
+    100198: RedEyeRightFront
+    100200: Rib1_1.L
+    100202: Rib1_1.R
+    100204: Rib1_2.L
+    100206: Rib1_2.R
+    100208: Rib1_3.L
+    100210: Rib1_3.L_end
+    100212: Rib1_3.R
+    100214: Rib1_3.R_end
+    100216: Rib2_1.L
+    100218: Rib2_1.R
+    100220: Rib2_2.L
+    100222: Rib2_2.R
+    100224: Rib2_3.L
+    100226: Rib2_3.L_end
+    100228: Rib2_3.R
+    100230: Rib2_3.R_end
+    100232: Rib3_1.L
+    100234: Rib3_1.R
+    100236: Rib3_2.L
+    100238: Rib3_2.R
+    100240: Rib3_3.L
+    100242: Rib3_3.L_end
+    100244: Rib3_3.R
+    100246: Rib3_3.R_end
+    100248: Rib4_1.L
+    100250: Rib4_1.R
+    100252: Rib4_2.L
+    100254: Rib4_2.R
+    100256: Rib4_3.L
+    100258: Rib4_3.L_end
+    100260: Rib4_3.R
+    100262: Rib4_3.R_end
+    100264: Rib5_1.L
+    100266: Rib5_1.R
+    100268: Rib5_2.L
+    100270: Rib5_2.R
+    100272: Rib5_3.L
+    100274: Rib5_3.L_end
+    100276: Rib5_3.R
+    100278: Rib5_3.R_end
+    100280: Root
+    100282: ShoulderInner.L
+    100284: ShoulderInner.R
+    100286: ShoulderOuter.L
+    100288: ShoulderOuter.L.001.R
+    100290: ShoulderPadBackLower.L
+    100292: ShoulderPadBackLower.L_end
+    100294: ShoulderPadBackLower.R
+    100296: ShoulderPadBackLower.R_end
+    100298: ShoulderPadBackUpper.L
+    100300: ShoulderPadBackUpper.R
+    100302: ShoulderPadTopLower.L
+    100304: ShoulderPadTopLower.L_end
+    100306: ShoulderPadTopLower.R
+    100308: ShoulderPadTopLower.R_end
+    100310: ShoulderPadTopMid.L
+    100312: ShoulderPadTopMid.R
+    100314: ShoulderPadTopUpper.L
+    100316: ShoulderPadTopUpper.R
+    100318: SkirtBack.L
+    100320: SkirtBack.L_end
+    100322: SkirtBack.R
+    100324: SkirtBack.R_end
+    100326: SkirtFrontLower.L
+    100328: SkirtFrontLower.L_end
+    100330: SkirtFrontLower.R
+    100332: SkirtFrontLower.R_end
+    100334: SkirtFrontUpper.L
+    100336: SkirtFrontUpper.R
+    100338: SkirtOutside.L
+    100340: SkirtOutside.L.001.R
+    100342: SkirtOutside.L.001.R_end
+    100344: SkirtOutside.L_end
+    100346: Spine1
+    100348: Spine2
+    100350: Spine3
+    100352: Spine4
+    100354: Spine5
+    100356: Spine6
+    100358: SpineHandle
+    100360: SpineHandle_end
+    100362: //RootNode
+    100364: ThumbLower.L
+    100366: ThumbLower.L_end
+    100368: ThumbLower.R
+    100370: ThumbLower.R_end
+    100372: ThumbUpper.L
+    100374: ThumbUpper.R
+    100376: Toe.L
+    100378: Toe.L_end
+    100380: Toe.R
+    100382: Toe.R_end
+    100384: TopHeadBackLower
+    100386: TopHeadBackLower_end
+    100388: TopHeadBackUpper
+    100390: TopHeadFront
+    100392: TopHeadFront_end
+    100394: TopHeadSide.L
+    100396: TopHeadSide.L_end
+    100398: TopHeadSide.R
+    100400: TopHeadSide.R_end
+    100402: Twig
+    100404: TwigEye.L
+    100406: TwigEye.R
+    100408: TwigMouth
+    100410: UpperArm.L
+    100412: UpperArm.R
+    100414: UpperFoot.L
+    100416: UpperFoot.L_end
+    100418: UpperFoot.R
+    100420: UpperFoot.R_end
+    100422: UpperLeg.L
+    100424: UpperLeg.R
+    100426: vineTarget
+    100428: vineTarget_end
+    400000: AnkleInside.L
+    400002: AnkleInside.L_end
+    400004: AnkleInside.R
+    400006: AnkleInside.R_end
+    400008: AnkleOutside.L
+    400010: AnkleOutside.L_end
+    400012: AnkleOutside.R
+    400014: AnkleOutside.R_end
+    400016: Armature
+    400018: ArmPole.L
+    400020: ArmPole.L_end
+    400022: ArmPole.R
+    400024: ArmPole.R_end
+    400026: BackFlapLower.L
+    400028: BackFlapLower.L_end
+    400030: BackFlapLower.R
+    400032: BackFlapLower.R_end
+    400034: BackFlapUpper.L
+    400036: BackFlapUpper.R
+    400038: Bone
+    400040: Bone.001
+    400042: Bone.002
+    400044: Bone.003
+    400046: Bone.003_end
+    400048: Bone.004
+    400050: Bone.004_end
+    400052: Bone.005
+    400054: Bone.006
+    400056: Bone.007
+    400058: Bone.008
+    400060: Bone.009
+    400062: Bone.010
+    400064: Bone.011
+    400066: Bone.012
+    400068: Bone.012_end
+    400070: Bone.013
+    400072: Bone.013_end
+    400074: Bone.014
+    400076: Bone.014_end
+    400078: Bone.015
+    400080: Chin
+    400082: Chin_end
+    400084: Foot.L
+    400086: Foot.R
+    400088: Hair1
+    400090: Hair2
+    400092: Hair3
+    400094: Hair4
+    400096: Hair5
+    400098: Hair5_end
+    400100: HairController
+    400102: HairController_end
+    400104: Hand.L
+    400106: Hand.R
+    400108: Hand.Upper.L
+    400110: Hand.Upper.R
+    400112: HandHandle.L
+    400114: HandHandle.L_end
+    400116: HandHandle.R
+    400118: HandHandle.R_end
+    400120: HandLower.L
+    400122: HandLower.L_end
+    400124: HandLower.R
+    400126: HandLower.R_end
+    400128: HandMid.L
+    400130: HandMid.R
+    400132: handTarget.L
+    400134: handTarget.L_end
+    400136: handTarget.R
+    400138: handTarget.R_end
+    400140: Head
+    400142: Heel.L
+    400144: Heel.R
+    400146: Hip.L
+    400148: Hip.R
+    400150: HipController
+    400152: LegHandle.L
+    400154: LegHandle.L_end
+    400156: LegHandle.R
+    400158: LegHandle.R_end
+    400160: LegPoleTarget.L
+    400162: LegPoleTarget.L_end
+    400164: LegPoleTarget.R
+    400166: LegPoleTarget.R_end
+    400168: LowerArm.L
+    400170: LowerArm.R
+    400172: LowerHead
+    400174: LowerLeg.L
+    400176: LowerLeg.R
+    400178: Neck
+    400180: OutsideFlapLower.L
+    400182: OutsideFlapLower.L_end
+    400184: OutsideFlapLower.R
+    400186: OutsideFlapLower.R_end
+    400188: OutsideFlapUpper.L
+    400190: OutsideFlapUpper.R
+    400192: RedEyeLeftBack
+    400194: RedEyeLeftFront
+    400196: RedEyeRightBack
+    400198: RedEyeRightFront
+    400200: Rib1_1.L
+    400202: Rib1_1.R
+    400204: Rib1_2.L
+    400206: Rib1_2.R
+    400208: Rib1_3.L
+    400210: Rib1_3.L_end
+    400212: Rib1_3.R
+    400214: Rib1_3.R_end
+    400216: Rib2_1.L
+    400218: Rib2_1.R
+    400220: Rib2_2.L
+    400222: Rib2_2.R
+    400224: Rib2_3.L
+    400226: Rib2_3.L_end
+    400228: Rib2_3.R
+    400230: Rib2_3.R_end
+    400232: Rib3_1.L
+    400234: Rib3_1.R
+    400236: Rib3_2.L
+    400238: Rib3_2.R
+    400240: Rib3_3.L
+    400242: Rib3_3.L_end
+    400244: Rib3_3.R
+    400246: Rib3_3.R_end
+    400248: Rib4_1.L
+    400250: Rib4_1.R
+    400252: Rib4_2.L
+    400254: Rib4_2.R
+    400256: Rib4_3.L
+    400258: Rib4_3.L_end
+    400260: Rib4_3.R
+    400262: Rib4_3.R_end
+    400264: Rib5_1.L
+    400266: Rib5_1.R
+    400268: Rib5_2.L
+    400270: Rib5_2.R
+    400272: Rib5_3.L
+    400274: Rib5_3.L_end
+    400276: Rib5_3.R
+    400278: Rib5_3.R_end
+    400280: Root
+    400282: ShoulderInner.L
+    400284: ShoulderInner.R
+    400286: ShoulderOuter.L
+    400288: ShoulderOuter.L.001.R
+    400290: ShoulderPadBackLower.L
+    400292: ShoulderPadBackLower.L_end
+    400294: ShoulderPadBackLower.R
+    400296: ShoulderPadBackLower.R_end
+    400298: ShoulderPadBackUpper.L
+    400300: ShoulderPadBackUpper.R
+    400302: ShoulderPadTopLower.L
+    400304: ShoulderPadTopLower.L_end
+    400306: ShoulderPadTopLower.R
+    400308: ShoulderPadTopLower.R_end
+    400310: ShoulderPadTopMid.L
+    400312: ShoulderPadTopMid.R
+    400314: ShoulderPadTopUpper.L
+    400316: ShoulderPadTopUpper.R
+    400318: SkirtBack.L
+    400320: SkirtBack.L_end
+    400322: SkirtBack.R
+    400324: SkirtBack.R_end
+    400326: SkirtFrontLower.L
+    400328: SkirtFrontLower.L_end
+    400330: SkirtFrontLower.R
+    400332: SkirtFrontLower.R_end
+    400334: SkirtFrontUpper.L
+    400336: SkirtFrontUpper.R
+    400338: SkirtOutside.L
+    400340: SkirtOutside.L.001.R
+    400342: SkirtOutside.L.001.R_end
+    400344: SkirtOutside.L_end
+    400346: Spine1
+    400348: Spine2
+    400350: Spine3
+    400352: Spine4
+    400354: Spine5
+    400356: Spine6
+    400358: SpineHandle
+    400360: SpineHandle_end
+    400362: //RootNode
+    400364: ThumbLower.L
+    400366: ThumbLower.L_end
+    400368: ThumbLower.R
+    400370: ThumbLower.R_end
+    400372: ThumbUpper.L
+    400374: ThumbUpper.R
+    400376: Toe.L
+    400378: Toe.L_end
+    400380: Toe.R
+    400382: Toe.R_end
+    400384: TopHeadBackLower
+    400386: TopHeadBackLower_end
+    400388: TopHeadBackUpper
+    400390: TopHeadFront
+    400392: TopHeadFront_end
+    400394: TopHeadSide.L
+    400396: TopHeadSide.L_end
+    400398: TopHeadSide.R
+    400400: TopHeadSide.R_end
+    400402: Twig
+    400404: TwigEye.L
+    400406: TwigEye.R
+    400408: TwigMouth
+    400410: UpperArm.L
+    400412: UpperArm.R
+    400414: UpperFoot.L
+    400416: UpperFoot.L_end
+    400418: UpperFoot.R
+    400420: UpperFoot.R_end
+    400422: UpperLeg.L
+    400424: UpperLeg.R
+    400426: vineTarget
+    400428: vineTarget_end
+    4300000: Twig
+    4300002: TwigEye.R
+    4300004: TwigEye.L
+    4300006: TwigMouth
+    4300008: RedEyeRightFront
+    4300010: RedEyeLeftFront
+    4300012: RedEyeRightBack
+    4300014: RedEyeLeftBack
+    7400000: SurfFast
+    7400002: Armature|BackPedal
+    7400004: Armature|SurfLogArmatureAction
+    7400006: SurfFast
+    9500000: //RootNode
+    13700000: RedEyeLeftBack
+    13700002: RedEyeLeftFront
+    13700004: RedEyeRightBack
+    13700006: RedEyeRightFront
+    13700008: Twig
+    13700010: TwigEye.L
+    13700012: TwigEye.R
+    13700014: TwigMouth
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: SurfFast
+      takeName: Armature|ArmatureAction
+      firstFrame: 0
+      lastFrame: 195
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/ArmPole.L
+        weight: 1
+      - path: Armature/ArmPole.L/ArmPole.L_end
+        weight: 1
+      - path: Armature/ArmPole.R
+        weight: 1
+      - path: Armature/ArmPole.R/ArmPole.R_end
+        weight: 1
+      - path: Armature/HandHandle.L
+        weight: 1
+      - path: Armature/HandHandle.L/HandHandle.L_end
+        weight: 1
+      - path: Armature/HandHandle.R
+        weight: 1
+      - path: Armature/HandHandle.R/HandHandle.R_end
+        weight: 1
+      - path: Armature/LegHandle.L
+        weight: 1
+      - path: Armature/LegHandle.L/LegHandle.L_end
+        weight: 1
+      - path: Armature/LegHandle.R
+        weight: 1
+      - path: Armature/LegHandle.R/LegHandle.R_end
+        weight: 1
+      - path: Armature/LegPoleTarget.L
+        weight: 1
+      - path: Armature/LegPoleTarget.L/LegPoleTarget.L_end
+        weight: 1
+      - path: Armature/LegPoleTarget.R
+        weight: 1
+      - path: Armature/LegPoleTarget.R/LegPoleTarget.R_end
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/HipController
+        weight: 1
+      - path: Armature/Root/HipController/BackFlapUpper.L
+        weight: 1
+      - path: Armature/Root/HipController/BackFlapUpper.L/BackFlapLower.L
+        weight: 1
+      - path: Armature/Root/HipController/BackFlapUpper.L/BackFlapLower.L/BackFlapLower.L_end
+        weight: 1
+      - path: Armature/Root/HipController/BackFlapUpper.R
+        weight: 1
+      - path: Armature/Root/HipController/BackFlapUpper.R/BackFlapLower.R
+        weight: 1
+      - path: Armature/Root/HipController/BackFlapUpper.R/BackFlapLower.R/BackFlapLower.R_end
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L/UpperLeg.L
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L/UpperLeg.L/LowerLeg.L/AnkleInside.L
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L/UpperLeg.L/LowerLeg.L/AnkleInside.L/AnkleInside.L_end
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L/UpperLeg.L/LowerLeg.L/AnkleOutside.L
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L/UpperLeg.L/LowerLeg.L/AnkleOutside.L/AnkleOutside.L_end
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L/UpperLeg.L/LowerLeg.L/Heel.L
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L/UpperLeg.L/LowerLeg.L/Heel.L/Foot.L
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L/UpperLeg.L/LowerLeg.L/Heel.L/Foot.L/Toe.L
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L/UpperLeg.L/LowerLeg.L/Heel.L/Foot.L/Toe.L/Toe.L_end
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L/UpperLeg.L/LowerLeg.L/Heel.L/UpperFoot.L
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L/UpperLeg.L/LowerLeg.L/Heel.L/UpperFoot.L/UpperFoot.L_end
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L/UpperLeg.L/SkirtBack.L
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L/UpperLeg.L/SkirtBack.L/SkirtBack.L_end
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L/UpperLeg.L/SkirtFrontUpper.L
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L/UpperLeg.L/SkirtFrontUpper.L/SkirtFrontLower.L
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L/UpperLeg.L/SkirtFrontUpper.L/SkirtFrontLower.L/SkirtFrontLower.L_end
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L/UpperLeg.L/SkirtOutside.L
+        weight: 1
+      - path: Armature/Root/HipController/Hip.L/UpperLeg.L/SkirtOutside.L/SkirtOutside.L_end
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R/UpperLeg.R
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R/UpperLeg.R/LowerLeg.R/AnkleInside.R
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R/UpperLeg.R/LowerLeg.R/AnkleInside.R/AnkleInside.R_end
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R/UpperLeg.R/LowerLeg.R/AnkleOutside.R
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R/UpperLeg.R/LowerLeg.R/AnkleOutside.R/AnkleOutside.R_end
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R/UpperLeg.R/LowerLeg.R/Heel.R
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R/UpperLeg.R/LowerLeg.R/Heel.R/Foot.R
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R/UpperLeg.R/LowerLeg.R/Heel.R/Foot.R/Toe.R
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R/UpperLeg.R/LowerLeg.R/Heel.R/Foot.R/Toe.R/Toe.R_end
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R/UpperLeg.R/LowerLeg.R/Heel.R/UpperFoot.R
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R/UpperLeg.R/LowerLeg.R/Heel.R/UpperFoot.R/UpperFoot.R_end
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R/UpperLeg.R/SkirtBack.R
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R/UpperLeg.R/SkirtBack.R/SkirtBack.R_end
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R/UpperLeg.R/SkirtFrontUpper.R
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R/UpperLeg.R/SkirtFrontUpper.R/SkirtFrontLower.R
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R/UpperLeg.R/SkirtFrontUpper.R/SkirtFrontLower.R/SkirtFrontLower.R_end
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R/UpperLeg.R/SkirtOutside.L.001.R
+        weight: 1
+      - path: Armature/Root/HipController/Hip.R/UpperLeg.R/SkirtOutside.L.001.R/SkirtOutside.L.001.R_end
+        weight: 1
+      - path: Armature/Root/HipController/OutsideFlapUpper.L
+        weight: 1
+      - path: Armature/Root/HipController/OutsideFlapUpper.L/OutsideFlapLower.L
+        weight: 1
+      - path: Armature/Root/HipController/OutsideFlapUpper.L/OutsideFlapLower.L/OutsideFlapLower.L_end
+        weight: 1
+      - path: Armature/Root/HipController/OutsideFlapUpper.R
+        weight: 1
+      - path: Armature/Root/HipController/OutsideFlapUpper.R/OutsideFlapLower.R
+        weight: 1
+      - path: Armature/Root/HipController/OutsideFlapUpper.R/OutsideFlapLower.R/OutsideFlapLower.R_end
+        weight: 1
+      - path: Armature/Root/Spine1
+        weight: 1
+      - path: Armature/Root/Spine1/Rib1_1.L
+        weight: 1
+      - path: Armature/Root/Spine1/Rib1_1.L/Rib1_2.L
+        weight: 1
+      - path: Armature/Root/Spine1/Rib1_1.L/Rib1_2.L/Rib1_3.L
+        weight: 1
+      - path: Armature/Root/Spine1/Rib1_1.L/Rib1_2.L/Rib1_3.L/Rib1_3.L_end
+        weight: 1
+      - path: Armature/Root/Spine1/Rib1_1.R
+        weight: 1
+      - path: Armature/Root/Spine1/Rib1_1.R/Rib1_2.R
+        weight: 1
+      - path: Armature/Root/Spine1/Rib1_1.R/Rib1_2.R/Rib1_3.R
+        weight: 1
+      - path: Armature/Root/Spine1/Rib1_1.R/Rib1_2.R/Rib1_3.R/Rib1_3.R_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Rib2_1.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Rib2_1.L/Rib2_2.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Rib2_1.L/Rib2_2.L/Rib2_3.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Rib2_1.L/Rib2_2.L/Rib2_3.L/Rib2_3.L_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Rib2_1.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Rib2_1.R/Rib2_2.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Rib2_1.R/Rib2_2.R/Rib2_3.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Rib2_1.R/Rib2_2.R/Rib2_3.R/Rib2_3.R_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone/Bone.001
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone/Bone.001/Bone.003
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone/Bone.001/Bone.003/Bone.003_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone/Bone.002
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone/Bone.002/Bone.004
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone/Bone.002/Bone.004/Bone.004_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone.005
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone.005/Bone.006
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone.005/Bone.006/Bone.007
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone.005/Bone.006/Bone.007/Bone.008
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone.005/Bone.006/Bone.007/Bone.008/Bone.009
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone.005/Bone.006/Bone.007/Bone.008/Bone.009/Bone.010
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone.005/Bone.006/Bone.007/Bone.008/Bone.009/Bone.010/Bone.011
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone.005/Bone.006/Bone.007/Bone.008/Bone.009/Bone.010/Bone.011/Bone.012
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone.005/Bone.006/Bone.007/Bone.008/Bone.009/Bone.010/Bone.011/Bone.012/Bone.012_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone.005/Bone.006/Bone.007/Bone.008/Bone.013
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone.005/Bone.006/Bone.007/Bone.008/Bone.013/Bone.013_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone.005/Bone.006/Bone.007/Bone.014
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/Bone.005/Bone.006/Bone.007/Bone.014/Bone.014_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/vineTarget
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Bone.015/vineTarget/vineTarget_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Rib3_1.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Rib3_1.L/Rib3_2.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Rib3_1.L/Rib3_2.L/Rib3_3.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Rib3_1.L/Rib3_2.L/Rib3_3.L/Rib3_3.L_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Rib3_1.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Rib3_1.R/Rib3_2.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Rib3_1.R/Rib3_2.R/Rib3_3.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Rib3_1.R/Rib3_2.R/Rib3_3.R/Rib3_3.R_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Rib4_1.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Rib4_1.L/Rib4_2.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Rib4_1.L/Rib4_2.L/Rib4_3.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Rib4_1.L/Rib4_2.L/Rib4_3.L/Rib4_3.L_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Rib4_1.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Rib4_1.R/Rib4_2.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Rib4_1.R/Rib4_2.R/Rib4_3.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Rib4_1.R/Rib4_2.R/Rib4_3.R/Rib4_3.R_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Rib5_1.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Rib5_1.L/Rib5_2.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Rib5_1.L/Rib5_2.L/Rib5_3.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Rib5_1.L/Rib5_2.L/Rib5_3.L/Rib5_3.L_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Rib5_1.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Rib5_1.R/Rib5_2.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Rib5_1.R/Rib5_2.R/Rib5_3.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Rib5_1.R/Rib5_2.R/Rib5_3.R/Rib5_3.R_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L/ShoulderPadBackUpper.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L/ShoulderPadBackUpper.L/ShoulderPadBackLower.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L/ShoulderPadBackUpper.L/ShoulderPadBackLower.L/ShoulderPadBackLower.L_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L/ShoulderPadTopUpper.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L/ShoulderPadTopUpper.L/ShoulderPadTopMid.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L/ShoulderPadTopUpper.L/ShoulderPadTopMid.L/ShoulderPadTopLower.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L/ShoulderPadTopUpper.L/ShoulderPadTopMid.L/ShoulderPadTopLower.L/ShoulderPadTopLower.L_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L/UpperArm.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L/UpperArm.L/LowerArm.L/Hand.L/Hand.Upper.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L/UpperArm.L/LowerArm.L/Hand.L/Hand.Upper.L/HandMid.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L/UpperArm.L/LowerArm.L/Hand.L/Hand.Upper.L/HandMid.L/HandLower.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L/UpperArm.L/LowerArm.L/Hand.L/Hand.Upper.L/HandMid.L/HandLower.L/HandLower.L_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L/UpperArm.L/LowerArm.L/Hand.L/Hand.Upper.L/ThumbUpper.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L/UpperArm.L/LowerArm.L/Hand.L/Hand.Upper.L/ThumbUpper.L/ThumbLower.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L/UpperArm.L/LowerArm.L/Hand.L/Hand.Upper.L/ThumbUpper.L/ThumbLower.L/ThumbLower.L_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L/UpperArm.L/LowerArm.L/handTarget.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.L/ShoulderOuter.L/UpperArm.L/LowerArm.L/handTarget.L/handTarget.L_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R/ShoulderPadBackUpper.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R/ShoulderPadBackUpper.R/ShoulderPadBackLower.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R/ShoulderPadBackUpper.R/ShoulderPadBackLower.R/ShoulderPadBackLower.R_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R/ShoulderPadTopUpper.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R/ShoulderPadTopUpper.R/ShoulderPadTopMid.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R/ShoulderPadTopUpper.R/ShoulderPadTopMid.R/ShoulderPadTopLower.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R/ShoulderPadTopUpper.R/ShoulderPadTopMid.R/ShoulderPadTopLower.R/ShoulderPadTopLower.R_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R/UpperArm.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R/UpperArm.R/LowerArm.R/Hand.R/Hand.Upper.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R/UpperArm.R/LowerArm.R/Hand.R/Hand.Upper.R/HandMid.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R/UpperArm.R/LowerArm.R/Hand.R/Hand.Upper.R/HandMid.R/HandLower.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R/UpperArm.R/LowerArm.R/Hand.R/Hand.Upper.R/HandMid.R/HandLower.R/HandLower.R_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R/UpperArm.R/LowerArm.R/Hand.R/Hand.Upper.R/ThumbUpper.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R/UpperArm.R/LowerArm.R/Hand.R/Hand.Upper.R/ThumbUpper.R/ThumbLower.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R/UpperArm.R/LowerArm.R/Hand.R/Hand.Upper.R/ThumbUpper.R/ThumbLower.R/ThumbLower.R_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R/UpperArm.R/LowerArm.R/handTarget.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/ShoulderInner.R/ShoulderOuter.L.001.R/UpperArm.R/LowerArm.R/handTarget.R/handTarget.R_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/Chin
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/Chin/Chin_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/Head
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/Head/HairController
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/Head/HairController/HairController_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/Head/TopHeadBackUpper
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/Head/TopHeadBackUpper/TopHeadBackLower
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/Head/TopHeadBackUpper/TopHeadBackLower/TopHeadBackLower_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/Head/TopHeadFront
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/Head/TopHeadFront/TopHeadFront_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/Head/TopHeadSide.L
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/Head/TopHeadSide.L/TopHeadSide.L_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/Head/TopHeadSide.R
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/Head/TopHeadSide.R/TopHeadSide.R_end
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/LowerHead
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/LowerHead/Hair1
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/LowerHead/Hair1/Hair2
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/LowerHead/Hair1/Hair2/Hair3
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/LowerHead/Hair1/Hair2/Hair3/Hair4
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/LowerHead/Hair1/Hair2/Hair3/Hair4/Hair5
+        weight: 1
+      - path: Armature/Root/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/Neck/LowerHead/Hair1/Hair2/Hair3/Hair4/Hair5/Hair5_end
+        weight: 1
+      - path: Armature/Root/SpineHandle
+        weight: 1
+      - path: Armature/Root/SpineHandle/SpineHandle_end
+        weight: 1
+      - path: RedEyeLeftBack
+        weight: 1
+      - path: RedEyeLeftFront
+        weight: 1
+      - path: RedEyeRightBack
+        weight: 1
+      - path: RedEyeRightFront
+        weight: 1
+      - path: Twig
+        weight: 1
+      - path: TwigEye.L
+        weight: 1
+      - path: TwigEye.R
+        weight: 1
+      - path: TwigMouth
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
