@@ -114,7 +114,7 @@ namespace StickyPhysics
         public bool ProjectRayOntoBoundaries(out Vector3 resultLocation, Ray ray)
         {
             resultLocation = Vector3.zero;
-            bool foundIntersect = false;
+            bool foundValidIntersection = false;
             float distance = Mathf.Infinity;
 
             // Construct plane for each of tri's edges and try raycast
@@ -127,17 +127,17 @@ namespace StickyPhysics
                     // If this hit is closest hit, set this as intersection point
                     if (result <= distance)
                     {
-                        foundIntersect = true;
+                        foundValidIntersection = true;
                         distance = result;
                     }
                 }
             }
 
             // Assign point if projection succeded
-            if (foundIntersect)
+            if (foundValidIntersection)
                 resultLocation = ray.origin + ray.direction * distance;
 
-            return foundIntersect;
+            return foundValidIntersection;
         }
 
         // Converts tri to something readable
